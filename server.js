@@ -37,24 +37,24 @@ app.route('/users/:id')
   // User.findById()
 })
 	// UPDATE
-	.put((req,res)=>{
+	.put((req,res)=> {
 		User.findByIdAndUpdate(
 			req.params.id,
 			{
-				name:req.body.newData.name,
-				email:req.body.newData.email,
-				password:req.body.newData.password
+				name: req.body.newData.name,
+				email: req.body.newData.email,
+				password: req.body.newData.password
 			},
 			{
-				new:true
+				new: true
 			},
-			(err,data)=>{
-				if (err){
+			(err, data) => {
+				if (err) {
 					res.json({
 						success: false,
 						message: err
 					})
-				} else if (!data){
+				} else if (!data) {
 					res.json({
 						success: false,
 						message: "Not Found"
@@ -67,18 +67,18 @@ app.route('/users/:id')
 				}
 			}
 		)
-// DELETE
 			// DELETE
-			.delete((req,res)=>{
+			// DELETE
+			.delete((req, res) => {
 				User.findByIdAndDelete(
 					req.params.id,
-					(err,data)=>{
-						if (err){
+					(err, data) => {
+						if (err) {
 							res.json({
 								success: false,
 								message: err
 							})
-						} else if (!data){
+						} else if (!data) {
 							res.json({
 								success: false,
 								message: "Not Found"
@@ -92,3 +92,4 @@ app.route('/users/:id')
 					}
 				)
 			})
+	})
